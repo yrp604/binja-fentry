@@ -46,7 +46,7 @@ kmod.register("linux-kernel-module")
 # Basically this function just needs to identify if we should use our new platform.
 #
 def linux_kmod_recognizer(parent_bv, metadata):
-  if b'.modinfo' in parent_bv.read(0, 0x99999999):
+  if b'\x00.modinfo\x00' in parent_bv.read(0, 0x99999999):
     return kmod
 
 #
